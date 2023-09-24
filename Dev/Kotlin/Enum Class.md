@@ -1,6 +1,7 @@
 지인분에게 Enum Class와 Sealed Class의 차이점에 대한 질문을 받았었는데
 깔끔하게 설명하지 못했었기에 정리하는 글을 남긴다.
 ## Enum Class란?
+***
 자바에서 상수를 객체지향적으로 객체화해서 관리하기 위해서 생겨난 클래스
 Enum 은 Enumeration 의 약자로 열거형을 의미하고 연관되거나 관련이 있는 **상수들의 집합**을 표현할 때 사용한다.
 > 상수 : 어떤 값인지는 모르겠지만 값이 변하지 않고 항상 일정한 값으로 변수와는 반대되는 단어
@@ -109,23 +110,24 @@ final class Season extends Enum {
 	- 단순히 상수를 넣는 게 아닌 상수에 해당 상수가 어떤 의미를 가지는지 이름이 붙기 때문
 - 상수 값의 타입 안정성이 보장된다. 
 	- 정수로 된 일반 상수로 값을 사용하면 의도하지 않은 다른 정수 값이 전달되어도 타입 구분이 되지 않음으로 예외 처리가 힘듬
-	- 특정 Enum 타입으로 when문을 짜는 경우에 새로운 Enum타입이 추가되면 IDE가 분기문에 새로운 Enum타입을 추가하라고 경고를 날려 줌
+	- 특정 Enum 타입으로 when문을 짜는 경우에 새로운 Enum타입이 추가되면 IDE가 분기문에 새로운 Enum타입을 추가하라고 경고를 날려 줌  <br> (IDE 가 특정 Enum 상수에 대한 분기문이 빠져있음을 알 수 있음)
 - 상수와 연관된 변수를 상수에 저장할 수 있다.(enum 생성자)
 
 ## 주의 사항 
 - [[Sealed Class]]와 달리 상속을 지원하지 않는다. (상속을 해줄 수도, 받을 수도 없다.)
 	- 고로 Enum Class에 대한 서브 클래스를 생성할 수 없다.
 	- 어떠한 Class로부터도 상속받을 수 없다. 상속을 원한다면 Interface를 활용해보자.
-- [[Sealed Class]]와 달리 최초에 설정한 enum 속성 값을 런타임에 변경할 수 없다.
+- [[Sealed Class]]와 달리 최초에 설정한 enum 속성 값을 런타임에 할당하거나 변경할 수 없다.
 	- ex) RED(255,0,0)를 RED(255,0,20)으로 코드를 수정하지 않는 이상 내부 프로퍼티 값을 변경할 수 없다. 
 
 ## Related Link
 ***
 [[Sealed Class]]
-[[Sealed 와 Enum 비교]]
 
 ## Reference
 ***
+https://kotlinlang.org/docs/enum-classes.html#working-with-enum-constants
+
 https://inpa.tistory.com/entry/JAVA-%E2%98%95-%EC%97%B4%EA%B1%B0%ED%98%95Enum-%ED%83%80%EC%9E%85-%EB%AC%B8%EB%B2%95-%ED%99%9C%EC%9A%A9-%EC%A0%95%EB%A6%AC
 
 https://kt.academy/article/kfde-enum

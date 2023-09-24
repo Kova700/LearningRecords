@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "e016f1c18c517011",
+            "id": "613ba0cdaf27e653",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,7 +20,7 @@
             }
           },
           {
-            "id": "e3096dacca946cdf",
+            "id": "40522cd9476bfb34",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -30,28 +30,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "59840ad8f8073223",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dev/Kotlin/Sealed 와 Enum 비교.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8dcb3abcbaeea81b",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -70,7 +51,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byCreatedTime"
+                "sortOrder": "alphabeticalReverse"
               }
             }
           },
@@ -101,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 332.0150947570801
   },
   "right": {
     "id": "bc692cd9db74957f",
@@ -117,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dev/Kotlin/Enum Class.md",
+                "file": "Dev/Kotlin/Sealed Class.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dev/Kotlin/Enum Class.md",
+                "file": "Dev/Kotlin/Sealed Class.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -157,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dev/Kotlin/Enum Class.md"
+                "file": "Dev/Kotlin/Sealed Class.md"
               }
             }
           },
@@ -168,13 +149,21 @@
               "type": "advanced-tables-toolbar",
               "state": {}
             }
+          },
+          {
+            "id": "40f19ee9fb43afff",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -187,29 +176,41 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e016f1c18c517011",
+  "active": "40522cd9476bfb34",
   "lastOpenFiles": [
     "Dev/Kotlin/Sealed Class.md",
     "Dev/Kotlin/Enum Class.md",
+    "Private/Res/Pasted image 20230923122045.png",
+    "Private/Daily/2023-09-24_Sun.md",
+    "Private/Daily/2023-09-23_Sat.md",
+    "Dev/Kotlin/Sealed 와 Enum 비교.md",
+    "Dev/Res/Pasted image 20230924151508.png",
+    "Dev/Res/Pasted image 20230924145218.png",
+    "Dev/Res/Pasted image 20230924144344.png",
+    "Dev/Res/Pasted image 20230924144039.png",
+    "Dev/Res/Pasted image 20230924144203.png",
+    "Dev/Res/Pasted image 20230924144225.png",
+    "Private/Pasted image 20230924143745.png",
+    "Pasted image 20230924143533.png.md",
+    "Dev/Res/Pasted image 20230924143533.png",
+    "Private/주제 정리.md",
+    "README.md",
+    "Dev/Kotlin/Generic.md",
+    "Dev/Kotlin/.md",
     "Private/Daily/2023-09-22_Fri.md",
-    "Private/Daily/context.mdb",
     "Private/Daily/Daily Template.md",
+    "Private/Daily/Daily.md",
+    "Private/Daily/context.mdb",
     "Private/Daily/2023-09-19_Tue.md",
     "Private/Daily/2023-09-20_Wed.md",
     "Private/Daily/2023-09-21_Thu.md",
-    "Private/주제 정리.md",
-    "Dev/Kotlin/Sealed 와 Enum 비교.md",
     "Dev/Method 영역.md",
     "Dev/Heap 영역.md",
     "Dev/Stack 영역.md",
     "Dev/Markup/Markup.md",
     "Dev/Res/Pasted image 20230920232640.png",
     "Heap.md",
-    "README.md",
     "새 텍스트 문서.txt",
-    "Private/Pasted image 20230920001835.png",
-    "Private/Pasted image 20230920001825.png",
-    "Res/backgroundImg.jpg",
     "Res",
     "Private/Res",
     "Dev/Markup",
@@ -220,18 +221,12 @@
     "Private/Todo/2023",
     "Private/Todo/2023-09-19_Tuesday.md",
     "Private/Todo/내일 할일.md",
-    "Private/Todo/오늘 할일.md",
     "Private/Thinks",
-    "test/Untitled 3.md",
     "Untitled.canvas",
     "Private/Untitled.canvas",
     "Dev",
-    "Kotlin/Kotlin.md",
     "Untitled 1.canvas",
     "Untitled 2.canvas",
-    "test2/test2.md",
-    "ㅁㄴㅇㅁㄴㅇ.md",
-    "Untitled 22.md",
     "test2/Untitled 1.canvas"
   ]
 }

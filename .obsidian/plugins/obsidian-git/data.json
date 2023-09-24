@@ -1,5 +1,5 @@
 {
-  "commitMessage": "vault backup: {{date}}",
+  "commitMessage": "{{files}}",
   "commitDateFormat": "YYYY-MM-DD HH:mm:ss",
   "autoSaveInterval": 0,
   "autoPushInterval": 0,
@@ -27,14 +27,14 @@
   "gitDir": "",
   "showFileMenu": true,
   "lineAuthor": {
-    "show": false,
-    "followMovement": "inactive",
-    "authorDisplay": "initials",
+    "show": true,
+    "followMovement": "same-commit",
+    "authorDisplay": "hide",
     "showCommitHash": false,
-    "dateTimeFormatOptions": "date",
+    "dateTimeFormatOptions": "hide",
     "dateTimeFormatCustomString": "YYYY-MM-DD HH:mm",
     "dateTimeTimezone": "viewer-local",
-    "coloringMaxAge": "1y",
+    "coloringMaxAge": "1d",
     "colorNew": {
       "r": 255,
       "g": 150,
@@ -47,9 +47,9 @@
     },
     "textColorCss": "var(--text-muted)",
     "ignoreWhitespace": false,
-    "gutterSpacingFallbackLength": 5,
+    "gutterSpacingFallbackLength": 0,
     "lastShownAuthorDisplay": "initials",
-    "lastShownDateTimeFormatOptions": "date"
+    "lastShownDateTimeFormatOptions": "natural language"
   },
   "autoCommitMessage": "vault backup: {{date}}"
 }
