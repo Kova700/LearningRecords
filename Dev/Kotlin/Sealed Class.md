@@ -26,7 +26,7 @@ class ForbiddenUser : LoginEvent
 class NetworkError : LoginEvent  
 class UnknownError : LoginEvent
 ```
-![[Pasted image 20230924144039.png]]
+<img width="80%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020230924144039.png?raw=true"/>
 
 ```kotlin
 abstract class LoginEvent
@@ -36,7 +36,8 @@ class ForbiddenUser : LoginEvent()
 class NetworkError : LoginEvent()  
 class UnknownError : LoginEvent()  
 ```
-![[Pasted image 20230924144225.png]]
+<img width="80%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020230924144225.png?raw=true"/>
+
 ```kotlin
 sealed class SealedLoginEvent {  
     object MoveToMain : SealedLoginEvent()  
@@ -46,11 +47,11 @@ sealed class SealedLoginEvent {
     object UnknownError : SealedLoginEvent()  
 }
 ```
-![[Pasted image 20230924144344.png]]
+<img width="80%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020230924144344.png?raw=true"/>
 위와 같이 sealed class를 사용하면 when 분기문에서 빠진 분기는 없는지 알 수 있다.
 
 추가로 enum또한 빠진 분기가 있는지 여부를 알려준다. (Enum 클래스 내부에 모든 상수가 선언되므로)
-![[Pasted image 20230924151508.png]]
+<img width="80%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020230924151508.png?raw=true"/>
 
 #### 2. Enum은 통일된 프로퍼티를 가져야하는 반면에 Sealed는 통일되지 않은 프로퍼티를 가질 수 있다. <br> (각 클래스에 적합한 프로퍼티를 가질 수 있음)
 ```kotlin
