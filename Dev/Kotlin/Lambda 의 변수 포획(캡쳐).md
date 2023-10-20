@@ -42,7 +42,7 @@ class TestClass(val action: () -> Unit)
 </br>
 
 **그 이유는 JVM 메모리 구조를 보면 알 수 있다.**  
-<img width="70%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020231019233815.png"/>   
+<img width="70%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020231019233815.png?raw=true"/>   
 (출처 : https://asfirstalways.tistory.com/158)
 
 **Heap 영역**과 **Method(static)영역**은 Thread와 독립적으로 존재하는데 반해,   
@@ -100,7 +100,7 @@ workerThread가 가지고 있는 testNum의 값은 10이고, 메인스레드가 
 ***
 위에서 봤던 JVM의 Runtime Data Area의 메모리 구조를 다시 보자.  
 
-<img width="70%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020231019233815.png"/>   
+<img width="70%" src="https://github.com/Kova700/LearningRecords/blob/master/Dev/Res/Pasted%20image%2020231019233815.png?raw=true"/>   
 (출처 : https://asfirstalways.tistory.com/158)
 
 **Heap영역**은 **Stack영역**과 달리 스레드간에 공유되는 영역이다.  
