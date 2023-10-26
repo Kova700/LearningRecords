@@ -118,7 +118,7 @@ public fun <T> Iterable<T>.sortedWith(comparator: Comparator<in T>): List<T> {
 Comparator는 객체 간 대소 비교(>,<, >=, <=)를 할 때, 비교 기준을 정의 하는 인터페이스로써,  
 Collection을 정렬할 때, 정렬 기준을 제시할 때 자주 사용된다.  
 인터페이스 내부 compare함수에 어떤 프로퍼티 값으로 객체 간 대소를 비교하면 되는지 명시해서 override 해주면 된다.   
-(단일 추상 클래스라서 SAM 변환이 가능해 람다표현식으로 인스턴스 생성이 가능하다.)  
+(단일 추상 클래스라서 SAM 변환이 가능해 람다 표현식으로 인스턴스 생성이 가능하다.)  
 ```kotlin
 sealed interface Car{
     val productName: String
@@ -200,7 +200,7 @@ Comparator\<Tesla>, Comparator\<Hyundai> 타입 파라미터 자리에 Comparato
 
 ```kotlin
 val stringMutableList = mutableListOf("n")  
-val anyMutableList :MutableList<Any> = stringMutableList  //Type mismatch.
+val anyMutableList :MutableList<Any> = stringMutableList  //실제로는 안됨(Type mismatch.)
 anyMutableList.add(26)
 ```
 MutableList\<String> 타입으로 정의된 stringMutableList타입에 Int타입인 26이 들어가는 상황이 생겼다.  
@@ -222,8 +222,8 @@ anyMutableList의 타입은 MutableList\<Any>임으로 anyMutableList.add() 함�
 그래서 Int 타입 데이터를 넣을 수 있게 stringMutableList가 업케스팅된 것이다.  
 이렇게 되면, 위에서 말한 것처럼 **타입 안정성이 사라지게 된다.**  
 
-그래서 코틀린 컴파일러는 이러한 상황을 막기 위해 **변성 규칙**을 준수해서 제네릭 클래스를 정의하게 강제한다. 
-(함부로 업케스팅, 다운 캐스팅을 못하게 제네릭 클래스를 정의할 때부터 미연에 방지하기 위해)  
+그래서 코틀린 컴파일러는 **클래스 외부의 사용자가 클래스를 잘못 사용하는 일을 막기** 위해 **변성 규칙**을 준수해서 제네릭 클래스를 정의하게 강제한다. 
+(함부로 업캐스팅, 다운 캐스팅을 못하게 제네릭 클래스를 정의할 때부터 미연에 방지하기 위해)  
 변성 규칙을 알면 **공변성을 가질 때** 왜 **out키워드**를 쓰는지, **반공변성을 가질 때** 왜 **in키워드**를 쓰는지 알 수 있다.  
 아래에서 변성 규칙에 대해 알아보자.   
 
@@ -237,7 +237,7 @@ anyMutableList의 타입은 MutableList\<Any>임으로 anyMutableList.add() 함�
 (생성자 파라미터는 in위치 out위치 둘 중 어느 곳에도 해당하지 않는다. == 생성자는 어디에 T가 있던 상관 없다는 뜻)
 
 out 위치는 함수의 반환 타입 위치를 지칭하고,  
-(나가는 위치라서 Out 키워드 사용)
+(나가는 위치라서 out 키워드 사용)
 ```kotlin
 interface List<out T> :Collection <T> {  
 	operator fun get(index :Int) : T //반환위치에 T가 존재
@@ -257,8 +257,13 @@ interface Comparator<in T> {
 }
 ```
 
-### 변성 규칙을 가지지 않는다면 벌어질 수 있는 상황
+</br>
+
+## 변성 규칙을 지키지 않는다면 벌어질 수 있는 상황
 ***
+
+</br>
+
 #### 공변성을 가지는 제네릭 클래스가 in위치에 타입 파라미터가 존재할 경우
 출처 : [stackoverflow](https://stackoverflow.com/questions/65776218/why-it-is-forbidden-to-use-out-keyword-in-generics-if-a-method-excepts-the-typ)
 ```kotlin
@@ -305,29 +310,66 @@ private fun main(){
 }
 ```
 
-## 추가로 (정리 중)
-***
-자바에서 배열은 공변성을 가지지만, 코틀린에서는 배열은 불공변성을 가진다.
+</br>
 
-이펙티브 자바 내용
-자바에서는 배열은 공변 (상위타입으로 캐스팅 가능해서, 이상한 거 넣을 수 있음),
-리스트는 불공변을 가진다.
-그래서 배열은 런타임에 에러가 터지고, 리스트는 컴파일에 에러가 터진다.
-그래서 자바에서는 아래와 같은 상황에 Array는 런타임에 에러가 터질 수 있다.
+## 추가로 
+***
+[Effective Java](https://www.yes24.com/Product/Goods/65551284)책에 "배열보다는 리스트를 사용하라 (Item 28)"라고 내용이 나온다.  
+책에서 배열보다 리스트 사용을 권고하는 이유는  
+**자바에서 배열(Array)은 공변성을 가지고, 리스트(List)는 불공변성을 가지기 때문**인데,   
+**자바에서 배열은 내용물의 수정 삭제가 가능한데 공변성까지 가지고 있다.**   
+(코틀린에서 말했던 변성 규칙이 지켜지지 않음, 공변인데 in 위치에 원소를 받고 있음)  
 ```java
 Object[] objectArray = new Long[1];
-objectArray[0] = "asd" // runtime exception
+objectArray[0] = "asd"; // runtime exception (in위치에 원소를 받고 있음)
 ```
-코틀린에서는
-배열은 불공변성을 가지고,
-List는 공변성, MutableList는 불공변성을 가진다.
-그래서 코틀린에서는 아래와 같은 상황에 List는 런타임 에러가 터질 수 있다.
+그래서 위 예시처럼 런타임 예외가 터진다.  
+제네릭처럼 타입 안정성이 사라지고, "asd" 문자열이 저장되는게 아닌 ArrayStoreException 런타임 예외가 터진다.   
+배열은 런타임에도 Reference주소에 어떤 데이터를 저장하는 배열인지 데이터 타입을 가지고 있기 때문에,   
+Long배열에 "asd"와 같은 문자열을 넣는 순간 ArrayStoreException가 터진다.   
+
+어쨌든, 책에서 하고 싶은 내용은   
+**런타임에 예외**를 던지는 **배열**보단, **컴파일타임**에 미리 에러를 잡을 수 있는 **리스트(제네릭)** 를 사용하라는 의미이다.  
+ 
+자바의 배열 공변성으로 인해 발생되는 문제를 해결하기 위해  
+코틀린 **배열은 불공변성을 가진다.**  (아래는 Array 선언부)  
 ```kotlin
-val stringLists = Array<List<String>>(1) { emptyList() }  
-val objects = stringLists as Array<List<Any>> // unchecked cast  
-objects[0] = listOf(42)  
-val s = stringLists[0][0] // runtime exception here
+public class Array<T> { //타입 파라미터에 in , out 키워드 아무것도 존재하지 않는다.  
+	...
+}
 ```
+```kotlin
+val stringArray = arrayOf("a")  
+val anyList: Array<Any> = stringArray //Type mismatch. (불가능)
+```
+
+또한, **자바 List는 불공변성**을 가지지만, 맨 위에서 보여준 예시처럼 **코틀린 List는 공변성**을 가진다.
+(코틀린의 List는 읽기 전용 타입이라 자바의 ArrayList가 out과 in이 둘 다 가능한 것과 달리 out만 가능함으로 )
+코틀린의 MutableLIst도 자바 List와 같은 맥락으로 불공변성을 가진다.
+(MutableList는 내부적으로 ArrayList를 사용하니까 당연한 내용이긴 하다.)
+
+</br>
+
+## 마지막으로
+***
+코틀린에서 배열이 불공변성, List는 공변성, MutableList는 불공변성을 가지는 것과 상관없이
+제네릭의 타입 파라미터가 런타임에 사라지는 것은 자바와 같기 때문에, 
+아래와 같이 확실하지 않은 명시적 타입 캐스팅을 하면 어쩔 수 없이 문제가 생길 수 밖에 없다.
+그래서, Kotlin in action에서도 확실히 타입 안정성을 보장하는 타입 검증 API를 이용하지 않는 이상,
+제네릭 클래스의 불확실한 타입 캐스팅은 권장하지 않는다고 명시되어 있다.
+```kotlin
+val stringListArray = Array<List<String>>(1) { emptyList() }  
+val objects = stringListArray as Array<List<Any>> // unchecked cast  
+objects[0] = listOf(42)  
+```
+위 모습이 바이트코드로 바뀔때, 아래와 같이 제네릭 타입이 사라진다.
+```kotlin
+val stringLists = Array(1) { emptyList() }  //List를 보관하는 Array라는 정보만 남아있음
+val objects = stringLists as Array // unchecked cast  
+objects[0] = listOf(42)  //List<Int>를 넣어도 List타입이기 때문에 아무 문제 없이 들어감
+```
+(런타임에 살아있는(존재하는) 타입 파라미터를 사용하고자 한다면 인라인함수 + reified키워드 조합을 공부해보는 걸 추천한다.)
+(link : [[reified 키워드에 관하여]])
 
 </br>
 
