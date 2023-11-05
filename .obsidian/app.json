@@ -1,6 +1,11 @@
 {
   "promptDelete": false,
-  "attachmentFolderPath": "Private",
+  "attachmentFolderPath": "Dev/Res",
   "tabSize": 4,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "newLinkFormat": "absolute",
+  "newFileLocation": "current",
+  "showUnsupportedFiles": false
 }
