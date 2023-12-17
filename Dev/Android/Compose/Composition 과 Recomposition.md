@@ -31,7 +31,7 @@ Remember 내부에 정의된 상태 값은 초기 컴포지션 중에 컴포지�
 @Composable
 fun MyScreen(
     viewModel: MyViewModel = viewModel()
-    //viewModel() = 활동이 완료되거나 프로세스가 종료될 때까지 동일한 인스턴스를 반환
+    //viewModel() = 컴포저블이 활동에서 사용되는 경우, 활동이 완료되거나 프로세스가 종료될 때까지 동일한 인스턴스를 반환
 ) {
     val dataExample = viewModel.exampleLiveData.observeAsState() //LiveData를 State타입으로 매핑
 
